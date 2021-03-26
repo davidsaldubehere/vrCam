@@ -1,0 +1,3 @@
+gamma: up down
+alpha: left right
+beta: steering wheel

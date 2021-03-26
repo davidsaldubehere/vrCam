@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>VR CAM</title>
+    <style>
+  *{
+    margin: 0;
+  }
+  .frame{
+    display: flex;
+    height: 100vh;
+  }
+	img {
+  	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+	width: 100%
+	}
+    </style>
+  </head>
+  <body>
+    <div class="frame">
+      <img id="bg" class="center" src="{{ url_for('video_feed') }}">
+      <img id="bg" class="center" src="{{ url_for('video_feed') }}">
+    </div>
+  </body>
+</html>
