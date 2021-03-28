@@ -12,7 +12,7 @@ function handleOrientation(event) {
 
   output.textContent  = `beta : ${x}\n`;
   output.textContent += `gamma: ${y}\n`;
-  output.textContent += `gamma: ${z}\n`;
+  output.textContent += `alpha: ${z}\n`;
 
   // Because we don't want to have the device upside down
   // We constrain the x value to the range [-90,90]
