@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template, Response
+from flask import Flask, render_template, Response, redirect, url_for, request
 from camera import VideoCamera
 
 app = Flask(__name__)
@@ -18,6 +18,15 @@ def gen(camera):
 def video_feed():
     return Response(gen(VideoCamera()),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
+
+
+@app.route('/login',methods = ['POST', 'GET'])
+def move():
+    print(request.form['gamma'])
+    print(request.form["alpha"])
+    return "Moving Arm"
+
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)

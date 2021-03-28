@@ -16,11 +16,42 @@
 	width: 100%
 	}
     </style>
+<script
+src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+crossorigin="anonymous"></script>
   </head>
   <body>
     <div class="frame">
       <img id="bg" class="center" src="{{ url_for('video_feed') }}">
       <img id="bg" class="center" src="{{ url_for('video_feed') }}">
     </div>
+
+    <form id="move" action = "http://localhost:5000/login" method = "post">
+      <p><input type = "text" name = "gamma" id="gamma" /></p>
+      <p><input type = "text" name = "alpha" id="alpha" /></p>
+      <p><input type = "submit" value = "submit" /></p>
+   </form>   
+   <script defer>
+     var gamma = document.getElementById("gamma");
+     var alpha = document.getElementById("alpha");
+     var form = document.getElementById("move");
+
+    setTimeout(function(){ 
+      gamma.value = "fads";
+      alpha.value = "fgadf";
+
+      $('#move').on('submit', function(e){
+    // validation code here
+
+      e.preventDefault()
+  });
+  
+
+      
+    }, 3000);
+
+
+   </script>
   </body>
 </html>
