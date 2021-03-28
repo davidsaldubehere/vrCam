@@ -1,9 +1,12 @@
 
 from flask import Flask, render_template, Response, redirect, url_for, request
 from camera import VideoCamera
-
+import serial
 app = Flask(__name__)
-
+ser = serial.Serial()
+ser.baudrate= 9600
+ser.port = '/dev/ttyUSB0'
+ser.open()
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -20,11 +23,16 @@ def video_feed():
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
-@app.route('/login',methods = ['POST', 'GET'])
+@app.route('/move',methods = ['POST', 'GET'])
 def move():
-    print(request.form['gamma'])
-    print(request.form["alpha"])
-    return "Moving Arm"
+    gamma = request.json['gamma']
+    alpha = request.json["alpha"]
+    if int(alpha)>170:
+        alpha = 170
+    ser.write(f"X{alpha}Y{gamma}".encode())
+    print(alpha)
+    return "moving"
+
 
 
 
