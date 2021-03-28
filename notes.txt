@@ -1,3 +1,7 @@
-gamma: up down
-alpha: left right
-beta: steering wheel
+gamma: up down 0 -- -90 -- 0  so if abs(negative) if positive 100-num +100
+alpha: left right -- 0-360 so divide by 2?
+beta: not needed
+
+forward drive arm
+round plate
+001
