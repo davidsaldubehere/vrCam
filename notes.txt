@@ -5,3 +5,8 @@ beta: not needed
 forward drive arm
 round plate
 001
+
+seems not to want to go past 125
+change out the motor
+
+sudo dmesg | more

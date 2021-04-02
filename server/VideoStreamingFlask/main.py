@@ -27,14 +27,23 @@ def video_feed():
 def move():
     gamma = request.json['gamma']
     alpha = request.json["alpha"]
-    if int(alpha)>170:
-        alpha = 170
-    ser.write(f"X{alpha}Y{gamma}".encode())
     print(alpha)
+    if int(gamma)>0:
+        alpha = 180-(180-int(alpha))
+    elif int(gamma)<0:
+        alpha = 180-(360-int(alpha))
+    print(alpha)
+    if(int(gamma)<0):
+        gamma = (int(gamma) * -1)
+    elif(int(gamma)>0):
+        gamma = 180 - int(gamma)
+    if not alpha < 0 and not alpha > 180:
+
+        ser.write(f"X{int(alpha)}Y{int(gamma)}".encode())
     return "moving"
 
 
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', debug=False, ssl_context=('cert.pem', 'key.pem'))
